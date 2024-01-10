@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
 
-import { RootState } from "../../redux/reduxStore";
+import { useTypeDispatch } from "../../redux/reduxType";
 import { cartAction } from "../../redux/reducer/cart";
 import { itemAction } from "../../redux/reducer/saveItem";
 
@@ -20,13 +19,12 @@ interface ItemProps {
 }
 
 const ItemDiv = ({ item }: ItemProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useTypeDispatch();
 
   //장바구니 상품 추가 이벤트
   const onAddCart = (price: number, id: string) => {
     if (item.count === 99) return;
     dispatch(cartAction.calcAddCart(price));
-    // dispatch(cartAction.addCartList(id));
     dispatch(itemAction.increaseCartItemCount(id));
   };
 

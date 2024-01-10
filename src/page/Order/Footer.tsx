@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useTypeDispatch, useTypeSelector } from "../../redux/reduxType";
 import { RootState } from "../../redux/reduxStore";
 
 import { loadingAction } from "../../redux/reducer/loading";
 
 const Footer = () => {
   const nav = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useTypeDispatch();
 
-  const cartData = useSelector((state: RootState) => state.cart);
-  const dataLoading = useSelector(
+  const cartData = useTypeSelector((state: RootState) => state.cart);
+  const dataLoading = useTypeSelector(
     (state: RootState) => state.loading.getApiLoading
   );
 
-  const orderLoading = useSelector(
+  const orderLoading = useTypeSelector(
     (state: RootState) => state.loading.orderLoading
   );
 
@@ -25,6 +25,19 @@ const Footer = () => {
     if (cartData.totalCount === 0) return;
 
     dispatch(loadingAction.changeOrderLoadingState(true));
+
+    setTimeout(() => {
+      dispatch(loadingAction.changeOrderLoadingState(false));
+
+      //에러 상황 연출을 위해 1개의 상품 구매시 에러 페이지로 이동
+      if (cartData.totalCount === 1) {
+        nav("/error");
+      }
+
+      if (cartData.totalCount > 1) {
+        nav("/complete");
+      }
+    }, 1000);
   };
 
   return (

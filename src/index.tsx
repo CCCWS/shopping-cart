@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 
 import Landing from "./page/Landing";
 import Order from "./page/Order/Order";
-import Complete from "./page/Complete";
-import Error from "./page/Error";
+import Complete from "./page/Result/Complete";
+import Error from "./page/Result/Error";
 
 import GlobalStyle from "./GlobalStyle";
 import "./color.css";

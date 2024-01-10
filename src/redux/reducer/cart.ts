@@ -15,25 +15,27 @@ interface StateType {
 const initialState: StateType = {
   totalCount: 0,
   totalPrice: 0,
-  itemList: [
-    {
-      id: "TEST",
-      count: 5,
-    },
-  ],
+  itemList: [],
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    //장바구니 상품 개수 증가
+    //장바구니 초기화
+    initCart: (state) => {
+      state.totalCount = initialState.totalCount;
+      state.totalPrice = initialState.totalPrice;
+      state.itemList = initialState.itemList;
+    },
+
+    //장바구니 총 상품 개수, 가격 증가
     calcAddCart: (state, action: PayloadAction<number>) => {
       state.totalCount = state.totalCount + 1;
       state.totalPrice = state.totalPrice + action.payload;
     },
 
-    //장바구니 상품 개수 하락
+    //장바구니 총 상품 개수, 가격 하락
     calcRemoveCart: (state, action: PayloadAction<number>) => {
       state.totalCount = state.totalCount - 1;
       state.totalPrice = state.totalPrice - action.payload;

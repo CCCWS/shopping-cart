@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
-import type { TypedUseSelectorHook } from "react-redux";
-import { RootState } from "../../redux/reduxStore";
 
+import { useTypeDispatch } from "../../redux/reduxType";
 import { itemAction } from "../../redux/reducer/saveItem";
+import { cartAction } from "../../redux/reducer/cart";
 import { loadingAction } from "../../redux/reducer/loading";
 
 import { PageDiv } from "../../PageStype";
@@ -16,31 +15,27 @@ import ItemList from "./ItemList";
 
 import db from "../../db/db.json";
 
-// export const useAppDispatch: () => AppDispatch = useDispatch;
-// export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
 function Order() {
-  const dispatch = useDispatch();
+  const dispatch = useTypeDispatch();
 
   useEffect(() => {
     dispatch(loadingAction.changeGetApiLoadingState(true));
+    dispatch(cartAction.initCart());
 
-    const api = async () => {
-      // const res = await axios.get("http://localhost:3001/items");
-      dispatch(itemAction.saveItem(db.items));
+    const getApi = setTimeout(async () => {
+      const res = await axios.get("http://localhost:3001/items");
+      dispatch(itemAction.saveItem(res.data));
       dispatch(loadingAction.changeGetApiLoadingState(false));
-    };
-
-    setTimeout(() => {
-      api();
     }, 1000);
+
+    return () => clearTimeout(getApi);
   }, [dispatch]);
 
   return (
     <OrderDiv>
-      <Header></Header>
-      <ItemList></ItemList>
-      <Footer></Footer>
+      <Header />
+      <ItemList />
+      <Footer />
     </OrderDiv>
   );
 }

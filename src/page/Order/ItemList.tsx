@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "../../redux/reduxStore";
+import { useTypeSelector } from "../../redux/reduxType";
 
 import ItemDiv from "./ItemDiv";
 
 const ItemList = () => {
-  const data = useSelector((state: RootState) => state.data.itemList);
-  const dataLoading = useSelector(
-    (state: RootState) => state.loading.getApiLoading
-  );
-  const orderLoading = useSelector(
-    (state: RootState) => state.loading.orderLoading
-  );
+  const data = useTypeSelector((state) => state.data.itemList);
+  const dataLoading = useTypeSelector((state) => state.loading.getApiLoading);
+  const orderLoading = useTypeSelector((state) => state.loading.orderLoading);
 
   return (
     <>
