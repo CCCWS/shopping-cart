@@ -21,6 +21,8 @@ const HeaderDiv = styled.div`
 
   display: flex;
   align-items: center;
+
+  z-index: 1;
 `;
 
 const Logo = styled(LogoBg)<{ bgicon: string }>`

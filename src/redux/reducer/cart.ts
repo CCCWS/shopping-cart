@@ -12,6 +12,7 @@ interface StateType {
   totalPrice: number;
   itemList: ItemType[];
 }
+
 const initialState: StateType = {
   totalCount: 0,
   totalPrice: 0,

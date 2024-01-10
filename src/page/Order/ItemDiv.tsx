@@ -84,9 +84,9 @@ const Div = styled.div<{
 
   transition: 0.5s;
 
-  opacity: ${(props) => (props.$isView ? "1" : "0")};
+  opacity: ${(props) => (props.$isView ? "1" : "0.3")};
   transform: ${(props) =>
-    props.$isView ? "translateY(0px)" : "translateY(100px)"};
+    props.$isView ? "translateY(0px)" : "translateY(50px)"};
 
   @media (max-width: 460px) {
     grid-template-columns: 20% calc(100% - 20% - 10px);
@@ -129,7 +129,7 @@ const ItemInfoBox = styled.div`
   height: 100%;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr 1fr;
 
   & > :nth-child(1) {
@@ -157,15 +157,21 @@ const ItemCount = styled.div`
   align-items: flex-end;
   flex-wrap: wrap;
 
-  gap: 0px 5px;
+  /* gap: 0px 5px; */
 
   div {
+    width: 1.2rem;
+    height: 1.2rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   button {
+    width: 1.2rem;
+    height: 1.2rem;
+
     background-color: transparent;
     border: none;
 
@@ -173,7 +179,12 @@ const ItemCount = styled.div`
     justify-content: center;
     align-items: center;
 
-    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
   }
 `;
 

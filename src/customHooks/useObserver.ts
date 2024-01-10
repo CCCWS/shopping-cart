@@ -28,7 +28,7 @@ const useObserver = (userRef: any, threshold: number, onlyOnce: boolean) => {
     return () => {
       observer.disconnect();
     };
-  }, [userRef, threshold, isView]);
+  }, [userRef, threshold, isView, onlyOnce]);
 
   return { isView };
 };
