@@ -23,12 +23,12 @@ function Order() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadingAction.changeLoadingState(true));
+    dispatch(loadingAction.changeGetApiLoadingState(true));
 
     const api = async () => {
       // const res = await axios.get("http://localhost:3001/items");
       dispatch(itemAction.saveItem(db.items));
-      dispatch(loadingAction.changeLoadingState(false));
+      dispatch(loadingAction.changeGetApiLoadingState(false));
     };
 
     setTimeout(() => {

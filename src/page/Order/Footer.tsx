@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -6,9 +6,11 @@ import { RootState } from "../../redux/reduxStore";
 
 const Footer = () => {
   const cartData = useSelector((state: RootState) => state.cart);
-  const loading = useSelector((state: RootState) => state.loading.loading);
+  const loading = useSelector((state: RootState) => state.loading.getApiLoading);
+
 
   const nav = useNavigate();
+
   return (
     <FooterDiv>
       <CartInfo>

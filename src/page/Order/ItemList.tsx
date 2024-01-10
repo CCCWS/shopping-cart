@@ -8,7 +8,9 @@ import ItemDiv from "./ItemDiv";
 
 const ItemList = () => {
   const data = useSelector((state: RootState) => state.data.itemList);
-  const loading = useSelector((state: RootState) => state.loading.loading);
+  const loading = useSelector(
+    (state: RootState) => state.loading.getApiLoading
+  );
 
   const [click, setClick] = useState<boolean>(false);
 

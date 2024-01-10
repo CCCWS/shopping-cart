@@ -2,18 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface StateType {
-  loading: boolean;
+  getApiLoading: boolean;
+  orderLoading: boolean;
 }
 const initialState: StateType = {
-  loading: true,
+  getApiLoading: true,
+  orderLoading: false,
 };
 
 export const loadingSlice = createSlice({
   name: "loading",
   initialState,
   reducers: {
-    changeLoadingState: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
+    changeGetApiLoadingState: (state, action: PayloadAction<boolean>) => {
+      state.getApiLoading = action.payload;
     },
   },
 });
