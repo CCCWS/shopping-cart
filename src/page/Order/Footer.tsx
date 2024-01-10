@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useTypeDispatch, useTypeSelector } from "../../redux/reduxType";
-import { RootState } from "../../redux/reduxStore";
 
 import { loadingAction } from "../../redux/reducer/loading";
 
@@ -10,14 +9,9 @@ const Footer = () => {
   const nav = useNavigate();
   const dispatch = useTypeDispatch();
 
-  const cartData = useTypeSelector((state: RootState) => state.cart);
-  const dataLoading = useTypeSelector(
-    (state: RootState) => state.loading.getApiLoading
-  );
-
-  const orderLoading = useTypeSelector(
-    (state: RootState) => state.loading.orderLoading
-  );
+  const cartData = useTypeSelector((state) => state.cart);
+  const dataLoading = useTypeSelector((state) => state.loading.getApiLoading);
+  const orderLoading = useTypeSelector((state) => state.loading.orderLoading);
 
   const onOrderBtnClick = () => {
     if (dataLoading) return;
@@ -25,9 +19,13 @@ const Footer = () => {
     if (cartData.totalCount === 0) return;
 
     dispatch(loadingAction.changeOrderLoadingState(true));
+  };
 
-    setTimeout(() => {
-      dispatch(loadingAction.changeOrderLoadingState(false));
+  useEffect(() => {
+    if (!orderLoading) return;
+
+    const movePage = setTimeout(() => {
+      // dispatch(loadingAction.changeOrderLoadingState(false));
 
       //에러 상황 연출을 위해 1개의 상품 구매시 에러 페이지로 이동
       if (cartData.totalCount === 1) {
@@ -37,8 +35,10 @@ const Footer = () => {
       if (cartData.totalCount > 1) {
         nav("/complete");
       }
-    }, 1000);
-  };
+    }, 2000);
+
+    return () => clearTimeout(movePage);
+  }, [nav, dispatch, cartData, orderLoading]);
 
   return (
     <FooterDiv>

@@ -20,13 +20,14 @@ function Order() {
 
   useEffect(() => {
     dispatch(loadingAction.changeGetApiLoadingState(true));
+    dispatch(loadingAction.changeOrderLoadingState(false));
     dispatch(cartAction.initCart());
 
     const getApi = setTimeout(async () => {
       const res = await axios.get("http://localhost:3001/items");
       dispatch(itemAction.saveItem(res.data));
       dispatch(loadingAction.changeGetApiLoadingState(false));
-    }, 1000);
+    }, 2000);
 
     return () => clearTimeout(getApi);
   }, [dispatch]);

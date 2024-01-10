@@ -35,6 +35,7 @@ const CompleteDiv = styled(PageDiv)`
   align-items: center;
 
   text-align: center;
+  font-weight: 700;
   white-space: pre-line;
 `;
 
