@@ -17,6 +17,10 @@ export const loadingSlice = createSlice({
     changeGetApiLoadingState: (state, action: PayloadAction<boolean>) => {
       state.getApiLoading = action.payload;
     },
+
+    changeOrderLoadingState: (state, action: PayloadAction<boolean>) => {
+      state.getApiLoading = action.payload;
+    },
   },
 });
 
