@@ -17,13 +17,13 @@ const ItemList = () => {
 
   return (
     <>
-      <Item>
+      <Item $orderLoading={orderLoading}>
         {dataLoading ? (
-          <Loading>
+          <DataLoadingDiv>
             목록을
             <br />
             불러오고 있습니다.
-          </Loading>
+          </DataLoadingDiv>
         ) : (
           <>
             {data.map((item) => (
@@ -33,15 +33,14 @@ const ItemList = () => {
             ))}
           </>
         )}
+        {orderLoading && <OrderLoadingDiv>주문중 입니다.</OrderLoadingDiv>}
       </Item>
-      {orderLoading && <Test>주문중 입니다.</Test>}
     </>
   );
 };
 
-const Item = styled.div`
+const Item = styled.div<{ $orderLoading: boolean }>`
   width: 100%;
-  /* height: calc(100% - 12rem - 5%); */
   height: 100%;
 
   display: flex;
@@ -50,11 +49,9 @@ const Item = styled.div`
 
   padding: 20px;
   overflow-y: scroll;
-
-  position: relative;
 `;
 
-const Loading = styled.div`
+const DataLoadingDiv = styled.div`
   font-size: 1.2rem;
   font-weight: 700;
   width: 100%;
@@ -66,12 +63,13 @@ const Loading = styled.div`
   text-align: center;
 `;
 
-const Test = styled(Loading)`
+const OrderLoadingDiv = styled(DataLoadingDiv)`
   width: 100%;
-  height: calc(100% - 12rem - 5%);
-  top: 5%;
-  /* backdrop-filter: blur(5px); */
-  background-color: #ff000034;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(3px);
+
   position: absolute;
 `;
 
