@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
 
 import { useTypeDispatch } from "./redux/reduxType";
 import { deviceAction } from "./redux/reducer/device";
@@ -12,7 +11,6 @@ import Error from "./page/Result/Error";
 
 import GlobalStyle from "./GlobalStyle";
 import "./color.css";
-import theme from "./theme";
 
 const App = () => {
   const dispatch = useTypeDispatch();
@@ -22,7 +20,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -30,7 +28,7 @@ const App = () => {
         <Route path="/complete" element={<Complete />} />
         <Route path="/error" element={<Error />} />
       </Routes>
-    </ThemeProvider>
+    </>
   );
 };
 

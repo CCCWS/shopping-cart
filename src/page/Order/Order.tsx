@@ -1,12 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-import { useTypeDispatch } from "../../redux/reduxType";
+import { useTypeDispatch, useTypeSelector } from "../../redux/reduxType";
 import { itemAction } from "../../redux/reducer/saveItem";
 import { cartAction } from "../../redux/reducer/cart";
 import { loadingAction } from "../../redux/reducer/loading";
-import { deviceAction } from "../../redux/reducer/device";
 
 import { PageDiv } from "../../PageStype";
 
@@ -18,6 +17,8 @@ import db from "../../db/db.json";
 
 const Order = () => {
   const dispatch = useTypeDispatch();
+  const deviceType = useTypeSelector((state) => state.device.device);
+  const [innerHeight, setInnerHeight] = useState<string>("");
 
   useEffect(() => {
     dispatch(loadingAction.changeGetApiLoadingState(true));
@@ -34,8 +35,15 @@ const Order = () => {
     return () => clearTimeout(getApi);
   }, [dispatch]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (deviceType === "mobile") setInnerHeight(`${window.innerHeight}px`);
+      if (deviceType === "pc") setInnerHeight("100vh");
+    }
+  }, [deviceType]);
+
   return (
-    <OrderDiv>
+    <OrderDiv $innerHeight={innerHeight}>
       <Header />
       <ItemList />
       <Footer />
@@ -43,7 +51,8 @@ const Order = () => {
   );
 };
 
-const OrderDiv = styled(PageDiv)`
+const OrderDiv = styled(PageDiv)<{ $innerHeight: string }>`
+  height: ${(props) => props.$innerHeight};
   position: relative;
   display: grid;
   grid-template-rows: 5% 1fr 11rem;
