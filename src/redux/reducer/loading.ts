@@ -19,7 +19,7 @@ export const loadingSlice = createSlice({
     },
 
     changeOrderLoadingState: (state, action: PayloadAction<boolean>) => {
-      state.getApiLoading = action.payload;
+      state.orderLoading = action.payload;
     },
   },
 });

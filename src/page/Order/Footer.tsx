@@ -1,15 +1,31 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/reduxStore";
 
+import { loadingAction } from "../../redux/reducer/loading";
+
 const Footer = () => {
-  const cartData = useSelector((state: RootState) => state.cart);
-  const loading = useSelector((state: RootState) => state.loading.getApiLoading);
-
-
   const nav = useNavigate();
+  const dispatch = useDispatch();
+
+  const cartData = useSelector((state: RootState) => state.cart);
+  const dataLoading = useSelector(
+    (state: RootState) => state.loading.getApiLoading
+  );
+
+  const orderLoading = useSelector(
+    (state: RootState) => state.loading.orderLoading
+  );
+
+  const onOrderBtnClick = () => {
+    if (dataLoading) return;
+    if (orderLoading) return;
+    if (cartData.totalCount === 0) return;
+
+    dispatch(loadingAction.changeOrderLoadingState(true));
+  };
 
   return (
     <FooterDiv>
@@ -22,8 +38,12 @@ const Footer = () => {
         )}원`}</div>
       </CartInfo>
 
-      <OrderBtn $isLoading={loading}>
-        {loading ? "로딩중..." : "주문하기"}
+      <OrderBtn
+        onClick={onOrderBtnClick}
+        $dataLoading={dataLoading}
+        $orderLoading={orderLoading}
+      >
+        {orderLoading ? "로딩중..." : "주문하기"}
       </OrderBtn>
     </FooterDiv>
   );
@@ -56,17 +76,23 @@ const CartInfo = styled.div`
   gap: 5px 0px;
 `;
 
-const OrderBtn = styled.button<{ $isLoading: boolean }>`
+const OrderBtn = styled.button<{
+  $dataLoading: boolean;
+  $orderLoading: boolean;
+}>`
   width: 100%;
   height: 4rem;
 
   border: none;
 
   color: white;
-  background-color: ${(props) => (props.$isLoading ? "gray" : "black")};
+
+  background-color: black;
+  background-color: ${(props) =>
+    (props.$dataLoading || props.$orderLoading) && "var(--gray)"};
 
   &:hover {
-    cursor: ${(props) => !props.$isLoading && "pointer"};
+    cursor: ${(props) => !props.$dataLoading && "pointer"};
   }
 `;
 
