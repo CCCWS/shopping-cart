@@ -46,9 +46,8 @@ function Order() {
 }
 
 const OrderDiv = styled(PageDiv)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 5% 1fr 11rem;
 `;
 
 export default Order;

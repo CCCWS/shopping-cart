@@ -51,7 +51,7 @@ const Footer = () => {
 
 const FooterDiv = styled.footer`
   width: 100%;
-  height: 12rem;
+  height: 100%;
   background-color: white;
 
   box-shadow: 0px 0px 10px 1px gray;

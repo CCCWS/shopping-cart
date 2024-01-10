@@ -16,7 +16,7 @@ const Header = () => {
 
 const HeaderDiv = styled.div`
   width: 100%;
-  height: 5%;
+  height: 100%;
   background-color: black;
 
   display: flex;
