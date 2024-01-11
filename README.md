@@ -112,7 +112,7 @@ https://cccws.github.io/shopping-cart
 | :---------------------------------------------: | :---------------------------------------------: |
 | <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/8d76f395-18ba-43c4-8d8a-1a52acdd1937"  width="200px"> |<img src="https://github.com/CCCWS/shopping-cart/assets/86645532/bad3a3d2-87f1-408c-8690-a9de7eae4d8c"  width="200px"> |
 
-React.memo 함수를 사용하여 개수 변경에 영향을 받지 않는 item은 리랜더링이 발생하지 않도록 개선
+React.memo 함수를 사용하여 개수 변경이 없는 item은 리랜더링이 발생하지 않도록 개선
 
 
 
