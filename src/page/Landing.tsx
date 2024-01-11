@@ -33,7 +33,7 @@ const Logo = styled(LogoBg)<{ bgicon: string }>`
 `;
 
 const PageMoveBtn = styled.button`
-  width: 30%;
+  width: 35%;
   height: 80px;
 
   border: 3px solid transparent;
@@ -41,10 +41,12 @@ const PageMoveBtn = styled.button`
 
   background-color: white;
 
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
 
   transition: 0.3s;
+
+  word-break: keep-all;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {

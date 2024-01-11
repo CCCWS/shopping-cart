@@ -13,8 +13,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ItemList from "./ItemList";
 
-import db from "../../db/db.json";
-
 const Order = () => {
   const dispatch = useTypeDispatch();
   const deviceType = useTypeSelector((state) => state.device.device);
@@ -26,9 +24,18 @@ const Order = () => {
     dispatch(cartAction.initCart());
 
     const getApi = setTimeout(async () => {
-      // const res = await axios.get("http://localhost:3001/items");
-      // dispatch(itemAction.saveItem(res.data));
-      dispatch(itemAction.saveItem(db.items));
+      if (process.env.NODE_ENV === "development") {
+        const res = await axios.get("http://localhost:3001/items");
+        dispatch(itemAction.saveItem(res.data));
+      }
+
+      if (process.env.NODE_ENV === "production") {
+        const res = await axios.get(
+          "https://my-json-server.typicode.com/cccws/tempDB/db"
+        );
+        dispatch(itemAction.saveItem(res.data.items));
+      }
+
       dispatch(loadingAction.changeGetApiLoadingState(false));
     }, 2000);
 
