@@ -46,9 +46,11 @@ const PageMoveBtn = styled.button`
 
   transition: 0.3s;
 
-  &:hover {
-    cursor: pointer;
-    border: 3px solid gray;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      cursor: pointer;
+      border: 3px solid gray;
+    }
   }
 `;
 

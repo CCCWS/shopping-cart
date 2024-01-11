@@ -98,8 +98,10 @@ const Div = styled.div<{
     grid-template-columns: 30% calc(100% - 30% - 10px);
   }
 
-  &:hover {
-    border: 2px solid black;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border: 2px solid black;
+    }
   }
 `;
 
@@ -181,9 +183,11 @@ const ItemCount = styled.div`
 
     transition: 0.3s;
 
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.2);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+      }
     }
   }
 `;
