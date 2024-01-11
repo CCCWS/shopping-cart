@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.de9bc258.css","mappings":"AAAA,MACE,cAAe,CACf,iBAA2B,CAC3B,oBACF","sources":["color.css"],"sourcesContent":[":root {\r\n  --gray: #b3b3b3;\r\n  --eventBg: rgb(255, 43, 43);\r\n  --itemCartBg: rgb(255, 229, 229);\r\n}\r\n"],"names":[],"sourceRoot":""}
