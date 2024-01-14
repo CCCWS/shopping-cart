@@ -62,12 +62,14 @@ https://cccws.github.io/shopping-cart
 |                   home            |                    order / 데이터 로딩                      |
 | :---------------------------------------------: | :---------------------------------------------: |
 | <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/136871ee-7abd-49a0-b599-9759b5225c28"  width="200px"> |<img src="https://github.com/CCCWS/shopping-cart/assets/86645532/c15a0ad2-6a56-4cd1-ac2b-95c9d90e79ef"  width="200px"> |  
-|                    order / 데이터 로딩 완료                     |                  order/ 반응형                      |
-  | <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/3bd3b5f5-0cd5-43f6-b5b3-de722b9b50f9"  width="200px"> |    <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/f80dab2f-64f1-4a80-afcb-acfd5c79a1b3"  width="300px"> | 
+|                    order / 데이터 로딩 완료                     |                  order/ 반응형(브라우저 크기 800px 이상)                     |
+  | <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/3bd3b5f5-0cd5-43f6-b5b3-de722b9b50f9"  width="200px"> |    <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/f85cea14-94fd-4639-bd8c-c29f15e450be"  width="300px"> | 
  |                    order / 페이지 구성                     |                  order/ 상품 개수 증가                      |
   | <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/781ebd44-95e2-48cf-8b9f-97a8a29531be"  width="200px"> |    <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/2fc5759a-12c0-44d4-ad1d-dfc754b0e318"  width="200px"> | 
    |                    order / 주문 로딩                     |                  주문 성공 및 실패                      |
   | <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/3e937709-cc55-43f5-8ef2-82da84d13c8a"  width="200px"> |    <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/d39c5b96-b9f9-4c03-8573-ccb1737ac4e9"  width="200px">   <img src="https://github.com/CCCWS/shopping-cart/assets/86645532/34065f7e-d0f1-4e56-827f-5660a8301bfc"  width="200px">|
+
+
 
             
 ## 기능 구현
