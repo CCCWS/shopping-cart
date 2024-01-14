@@ -36,17 +36,16 @@ const ItemList = () => {
 
 const Item = styled.div<{ $orderLoading: boolean }>`
   width: 100%;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
   gap: 20px 0px;
 
   padding: 20px;
-  overflow-y: scroll;
+
+  padding-bottom: calc(10rem + 20px);
 
   @media (min-width: 800px) {
-    /* width: 80vw; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 10px;

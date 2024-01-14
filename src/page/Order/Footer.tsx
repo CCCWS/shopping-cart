@@ -63,12 +63,11 @@ const Footer = () => {
 };
 
 const FooterDiv = styled.footer`
-  width: 100%;
+  /* width: 100%;
   height: 100%;
   background-color: white;
 
-  box-shadow: 0px 0px 10px 1px gray;
-  border-radius: 20px 20px 0px 0px;
+ 
 
   padding: 20px;
 
@@ -76,7 +75,27 @@ const FooterDiv = styled.footer`
   flex-direction: column;
   justify-content: space-between;
 
-  z-index: 1;
+  z-index: 1; */
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+
+  background-color: white;
+
+  box-shadow: 0px 0px 10px 1px gray;
+  border-radius: 20px 20px 0px 0px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const CartInfo = styled.div`

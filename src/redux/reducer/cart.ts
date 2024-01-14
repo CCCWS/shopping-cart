@@ -42,6 +42,10 @@ export const cartSlice = createSlice({
       state.totalPrice = state.totalPrice - action.payload;
     },
 
+
+
+   
+    //개수 수정은 saveItem.ts에서 처리 하는것으로 변경
     //상품 개수 증가
     addCartList: (state, action: PayloadAction<string>) => {
       //장바구니에 상품이 있는지 확인하고

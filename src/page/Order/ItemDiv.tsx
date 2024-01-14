@@ -27,7 +27,7 @@ const ItemDiv = ({ item }: ItemProps) => {
 
   //장바구니 상품 추가 이벤트
   const onAddCart = (price: number, id: string) => {
-    if (item.count === 99) return;
+    if (item.count === 999) return;
     dispatch(cartAction.calcAddCart(price));
     dispatch(itemAction.increaseCartItemCount(id));
   };

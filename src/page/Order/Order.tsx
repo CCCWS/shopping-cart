@@ -15,8 +15,6 @@ import ItemList from "./ItemList";
 
 const Order = () => {
   const dispatch = useTypeDispatch();
-  const deviceType = useTypeSelector((state) => state.device.device);
-  const [innerHeight, setInnerHeight] = useState<string>("");
 
   useEffect(() => {
     dispatch(loadingAction.changeGetApiLoadingState(true));
@@ -42,15 +40,8 @@ const Order = () => {
     return () => clearTimeout(getApi);
   }, [dispatch]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (deviceType === "mobile") setInnerHeight(`${window.innerHeight}px`);
-      if (deviceType === "pc") setInnerHeight("100vh");
-    }
-  }, [deviceType]);
-
   return (
-    <OrderDiv $innerHeight={innerHeight}>
+    <OrderDiv>
       <Header />
       <ItemList />
       <Footer />
@@ -58,11 +49,16 @@ const Order = () => {
   );
 };
 
-const OrderDiv = styled(PageDiv)<{ $innerHeight: string }>`
-  height: ${(props) => props.$innerHeight};
+const OrderDiv = styled(PageDiv)`
+  width: 100%;
+  height: 100vh;
+
   position: relative;
-  display: grid;
-  grid-template-rows: 5% 1fr 11rem;
+  overflow-y: scroll;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export default Order;

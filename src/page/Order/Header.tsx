@@ -14,19 +14,23 @@ const Header = () => {
   );
 };
 
-const HeaderDiv = styled.div`
+const HeaderDiv = styled.header`
   width: 100%;
-  height: 100%;
+  height: 5%;
+
   background-color: black;
 
   display: flex;
   align-items: center;
 
+  position: sticky;
+  top: 0;
+
   z-index: 1;
 `;
 
 const Logo = styled(LogoBg)<{ bgicon: string }>`
-  width: 120px;
+  width: 20%;
   height: 60%;
 
   &:hover {
