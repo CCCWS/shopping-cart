@@ -26,6 +26,8 @@ const HeaderDiv = styled.header`
   position: sticky;
   top: 0;
 
+  padding-left: 1rem;
+
   z-index: 1;
 `;
 

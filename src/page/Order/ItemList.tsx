@@ -49,6 +49,7 @@ const Item = styled.div<{ $orderLoading: boolean }>`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 10px;
+    padding-right: calc(20% + 20px);
   }
 `;
 
