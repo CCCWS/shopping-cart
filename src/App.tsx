@@ -1,8 +1,4 @@
-import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-
-import { useTypeDispatch } from "./redux/reduxType";
-import { deviceAction } from "./redux/reducer/device";
 
 import Landing from "./page/Landing";
 import Order from "./page/Order/Order";
@@ -13,12 +9,6 @@ import GlobalStyle from "./GlobalStyle";
 import "./color.css";
 
 const App = () => {
-  const dispatch = useTypeDispatch();
-
-  useEffect(() => {
-    dispatch(deviceAction.checkDeviceType());
-  }, [dispatch]);
-
   return (
     <>
       <GlobalStyle />
