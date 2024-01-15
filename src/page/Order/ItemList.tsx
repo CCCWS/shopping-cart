@@ -57,7 +57,7 @@ const LoadingDiv = styled.div`
   width: 100%;
   height: 100%;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   backdrop-filter: blur(3px);
